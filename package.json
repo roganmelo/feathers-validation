@@ -1,6 +1,6 @@
 {
   "name": "feathers-validations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "⚓️ A Feathers Hook to validate data based on model.",
   "repository": "https://github.com/roganmelo/feathers-validations",
   "homepage": "https://github.com/roganmelo/feathers-validations",
