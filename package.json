@@ -1,9 +1,9 @@
 {
-  "name": "feathers-validation",
+  "name": "feathers-validations",
   "version": "1.0.0",
   "description": "⚓️ A Feathers Hook to validate data based on model.",
-  "repository": "https://github.com/roganmelo/feathers-validation",
-  "homepage": "https://github.com/roganmelo/feathers-validation",
+  "repository": "https://github.com/roganmelo/feathers-validations",
+  "homepage": "https://github.com/roganmelo/feathers-validations",
   "license": "MIT",
   "author": {
     "name": "Rogan Melo",
@@ -15,7 +15,7 @@
     "clean": "rm -rf ./dist",
     "compile": "yarn clean && cp -r src/ dist/ && babel src --out-dir dist",
     "prepublish": "yarn compile && yarn test",
-    "eslint": "eslint src/. --config .eslintrc",
+    "eslint": "eslint src/. tests/. --config .eslintrc",
     "jest": "jest",
     "test": "yarn eslint && NODE_ENV=development yarn jest"
   },
@@ -28,9 +28,7 @@
   ],
   "dependencies": {
     "@feathersjs/errors": "^3.3.6",
-    "get-by-dot": "^1.0.2",
-    "object-dot-keys": "^1.0.2",
-    "set-by-dot": "^1.0.4"
+    "data-validations": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

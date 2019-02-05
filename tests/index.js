@@ -1,13 +1,7 @@
-import hook from '../dist';
 import { BadRequest } from '@feathersjs/errors';
+import { required, max, min } from 'data-validations';
+import hook from '../dist';
 
-const max = (maxLength, message) => value => value && value.length > maxLength
-  ? message
-  : undefined;
-const min = (minLength, message) => value => value && value.length < minLength
-  ? message
-  : undefined;
-const required = message => value => !value ? message : undefined;
 const createContext = overrides => ({
   type: 'before',
   method: 'create',
