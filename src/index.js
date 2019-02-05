@@ -21,7 +21,7 @@ const validateHook = (createModel, message = 'Validation error.') => context => 
   const { data } = context;
   const { error, errors } = validate(data, model);
 
-  if(error) throw new BadRequest(message, { errors });
+  if(error) throw new BadRequest(message, { ...data, errors });
 
   return context;
 };
