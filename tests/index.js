@@ -12,13 +12,13 @@ const createContext = overrides => ({
   },
   ...overrides
 });
-const validationError = (errors, message) => new BadRequest({
+const validationError = (errors, data, message) => new BadRequest({
   type: 'FeathersError',
   name: 'BadRequest',
   message: message || 'Validation error.',
   code: 400,
   className: 'bad-request',
-  data: {},
+  data,
   errors
 });
 
@@ -68,7 +68,7 @@ describe('feathers-validation hook', () => {
     const context = createContext({ data });
     const nameValidationMessage = 'Name is required.';
     const model = { name: [required(nameValidationMessage)] };
-    const error = validationError({ name: nameValidationMessage });
+    const error = validationError({ name: nameValidationMessage }, data);
 
     expect(() => hook(model)(context)).toThrowError(error);
   });
@@ -79,7 +79,7 @@ describe('feathers-validation hook', () => {
     const customMessage = 'Custom message.';
     const nameValidationMessage = 'Name is required.';
     const model = { name: [required(nameValidationMessage)] };
-    const error = validationError({ name: nameValidationMessage }, customMessage);
+    const error = validationError({ name: nameValidationMessage }, data, customMessage);
 
     expect(() => hook(model, customMessage)(context)).toThrowError(error);
   });
@@ -96,7 +96,7 @@ describe('feathers-validation hook', () => {
     const error = validationError({
       name: nameValidationMessage,
       age: ageValidationMessage
-    });
+    }, data);
 
     expect(() => hook(model)(context)).toThrowError(error);
   });
@@ -111,7 +111,7 @@ describe('feathers-validation hook', () => {
     };
     const error = validationError({
       name: [nameMaxValidationMessage, nameMinValidationMessage]
-    });
+    }, data);
 
     expect(() => hook(model)(context)).toThrowError(error);
   });
